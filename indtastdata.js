@@ -31,15 +31,9 @@ const patienter = {
   }
 };
 
-const aktivPersona = hentAktivPersona();
 const urlParams = new URLSearchParams(window.location.search);
-let aktivPatientId = patienter[urlParams.get("patient")] ? urlParams.get("patient") : "amina";
-
-if (aktivPersona && aktivPersona.rolle === "patient") {
-  aktivPatientId = aktivPersona.id;
-  document.getElementById("patientliste-link").hidden = true;
-}
-
+const patientFraUrl = urlParams.get("patient");
+const aktivPatientId = patienter[patientFraUrl] ? patientFraUrl : "amina";
 const aktivPatient = patienter[aktivPatientId];
 const plan = aktivPatient.plan;
 const lagerNoegle = "s3_mockup_registreringer_" + aktivPatientId;
@@ -62,14 +56,6 @@ function hentRegistreringer() {
   const gemtTekst = localStorage.getItem(lagerNoegle);
   if (gemtTekst === null) {
     return [];
-  }
-  return JSON.parse(gemtTekst);
-}
-
-function hentAktivPersona() {
-  const gemtTekst = localStorage.getItem("s3_aktiv_persona");
-  if (gemtTekst === null) {
-    return null;
   }
   return JSON.parse(gemtTekst);
 }
