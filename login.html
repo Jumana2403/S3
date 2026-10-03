@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Diabetesmåleforløb</title>
+  <title>Log ind - Diabetesmåleforløb</title>
   <link rel="stylesheet" href="style.css">
   <script src="login.js" defer></script>
 </head>
-<body>
+<body class="login-side">
   <main class="kort">
-    <h1>Log ind</h1>
+    <h1 class="login-overskrift">Log ind</h1>
+    <p>Diabetesmåleforløb</p>
     <p>Vælg en persona til den klikbare mockup.</p>
 
     <form id="login-form">
@@ -23,7 +24,7 @@
       </div>
 
       <button type="submit" class="button-primary">Fortsæt</button>
-      <p id="login-besked" role="status"></p>
+      <p id="besked" role="status"></p>
     </form>
   </main>
 </body>
