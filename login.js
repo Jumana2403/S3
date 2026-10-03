@@ -1,16 +1,51 @@
-const loginForm = document.getElementById("login-form");
-const personaFelt = document.getElementById("persona");
+const formular = document.getElementById("login-form");
+const brugernavnFelt = document.getElementById("brugernavn");
+const adgangskodeFelt = document.getElementById("adgangskode");
+const patientKnap = document.getElementById("patient-knap");
+const personaleKnap = document.getElementById("personale-knap");
+const rolleBesked = document.getElementById("rolle-besked");
+const besked = document.getElementById("besked");
 
-const personaer = {
-  amina: { id: "amina", navn: "Amina Karlsen", rolle: "patient", side: "indtastdata.html?patient=amina" },
-  jonas: { id: "jonas", navn: "Jonas Mikkelsen", rolle: "patient", side: "indtastdata.html?patient=jonas" },
-  sara: { id: "sara", navn: "Sara Nielsen", rolle: "personale", side: "patientliste.html" }
-};
+let valgtRolle = "";
 
-loginForm.addEventListener("submit", (event) => {
+function vaelgPatient() {
+  valgtRolle = "patient";
+  patientKnap.classList.add("valgt-rolle");
+  personaleKnap.classList.remove("valgt-rolle");
+  rolleBesked.innerText = "Du har valgt: Patient";
+  besked.innerText = "";
+}
+
+function vaelgPersonale() {
+  valgtRolle = "personale";
+  personaleKnap.classList.add("valgt-rolle");
+  patientKnap.classList.remove("valgt-rolle");
+  rolleBesked.innerText = "Du har valgt: Sundhedspersonale";
+  besked.innerText = "";
+}
+
+function logInd(event) {
   event.preventDefault();
+  besked.innerText = "";
 
-  const valgtPersona = personaer[personaFelt.value];
-  localStorage.setItem("s3_aktiv_persona", JSON.stringify(valgtPersona));
-  window.location.href = valgtPersona.side;
-});
+  if (brugernavnFelt.value.trim() === "") {
+    besked.innerText = "Skriv et brugernavn. Det må ikke kun være mellemrum.";
+    return;
+  }
+  if (adgangskodeFelt.value.trim() === "") {
+    besked.innerText = "Skriv en opdigtet adgangskode. Den må ikke kun være mellemrum.";
+    return;
+  }
+
+  if (valgtRolle === "patient") {
+    window.location.href = "indtastdata.html";
+  } else if (valgtRolle === "personale") {
+    window.location.href = "patientliste.html";
+  } else {
+    besked.innerText = "Vælg Patient eller Sundhedspersonale først.";
+  }
+}
+
+patientKnap.addEventListener("click", vaelgPatient);
+personaleKnap.addEventListener("click", vaelgPersonale);
+formular.addEventListener("submit", logInd);
