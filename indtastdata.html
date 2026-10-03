@@ -9,78 +9,29 @@
 </head>
 <body>
   <main class="kort">
-    <nav aria-label="Navigation i mockup">
-      <p>
-        <a class="button" href="login.html">Login</a>
-        <a class="button" href="patientliste.html" id="patientliste-link">Patientliste</a>
-        <a class="button" href="indtastdata.html" aria-current="page">Indtast data</a>
-      </p>
-    </nav>
-
-    <h1>Indtast blodsukkermåling</h1>
-    <p id="persona-tekst">Registrer en syntetisk måling og se, hvordan den passer til dagens måleplan.</p>
+    <h1>Registrer blodsukker</h1>
+    <p>Her kan du indtaste din blodsukkermåling.</p>
+    <p>Brug kun fiktive værdier i denne prototype.</p>
 
     <section class="maaleplan" aria-labelledby="dagens-plan">
-      <h2 id="dagens-plan">Dagens måleplan</h2>
-      <p>Patient: <strong id="patient-navn">Amina Karlsen</strong></p>
-      <ul class="planliste" id="planliste"></ul>
+      <h2 id="dagens-plan">Din måleplan</h2>
+      <p>Planlagt måling: <strong id="planlagt-tidspunkt">Indlæser...</strong></p>
+      <p>Status: <span class="status status-planlagt" id="maale-status">Planlagt</span></p>
     </section>
 
     <form id="maaling-form">
-      <div class="form-field">
-        <label for="maalingstype">Målingstype</label>
-        <select id="maalingstype" required>
-          <option value="morgen">Morgen - før morgenmad</option>
-          <option value="middag">Middag - før frokost</option>
-          <option value="aften">Aften - sengetid</option>
-          <option value="ekstra">Ekstra måling</option>
-        </select>
-      </div>
+      <h2>Indtast den planlagte måling</h2>
 
       <div class="form-field">
         <label for="blodsukker">Blodsukker i mmol/L</label>
         <input id="blodsukker" type="number" min="1" max="30" step="0.1" placeholder="fx 6.8" required>
       </div>
 
-      <div class="form-field">
-        <label for="tidspunkt">Tidspunkt</label>
-        <input id="tidspunkt" type="datetime-local" required>
-      </div>
-
-      <div class="form-field">
-        <label for="note">Kort note</label>
-        <textarea id="note" maxlength="160" placeholder="Fx efter motion eller før aftensmad"></textarea>
-      </div>
-
-      <p class="data-note">Mockuppet bruger kun fiktive testdata og gemmer ikke CPR, adgangskode eller rigtige patientoplysninger.</p>
-
-      <button type="submit" class="button-primary">Gem måling</button>
+      <button type="submit" class="button-primary">Registrer måling</button>
       <p id="maaling-besked" role="status"></p>
     </form>
 
-    <section aria-labelledby="preview-heading">
-      <h2 id="preview-heading">Forhåndsvisning</h2>
-      <dl class="preview-liste">
-        <div>
-          <dt>Status</dt>
-          <dd id="preview-status">Planlagt</dd>
-        </div>
-        <div>
-          <dt>Værdi</dt>
-          <dd id="preview-vaerdi">Udfyld blodsukker</dd>
-        </div>
-        <div>
-          <dt>Tidspunkt</dt>
-          <dd id="preview-tid">Vælg tidspunkt</dd>
-        </div>
-      </dl>
-    </section>
-
-    <section aria-labelledby="seneste-heading">
-      <h2 id="seneste-heading">Seneste registreringer</h2>
-      <ul id="registreringer" class="registreringer"></ul>
-      <button id="ryd-knap" type="button" class="button">Ryd testdata</button>
-    </section>
+    <p><a class="button" href="login.html">Tilbage til login</a></p>
   </main>
 </body>
 </html>
