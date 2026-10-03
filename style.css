@@ -145,3 +145,85 @@ caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
 .status-udfoert { background-color: #e7ebef; }
 .status-mangler { border-width: 2px; }
 .status-forsinket { border-style: double; border-width: 3px; }
+
+/* Indtast data-side */
+.dataindtastning {
+  max-width: 44rem;
+}
+.side-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.side-nav a {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #84909c;
+  border-radius: 0.35rem;
+  background-color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.side-nav a[aria-current="page"] {
+  background-color: #e7ebef;
+  color: #202a35;
+}
+.planliste {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.demo-note {
+  color: #52606d;
+  font-size: 0.9375rem;
+}
+.preview-liste {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+.preview-liste div {
+  padding: 0.75rem;
+  border: 1px solid #84909c;
+  border-radius: 0.35rem;
+  background-color: #f4f6f8;
+}
+.preview-liste dt {
+  color: #52606d;
+  font-size: 0.9375rem;
+}
+.preview-liste dd {
+  margin-left: 0;
+  font-weight: bold;
+}
+.registreringer {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding-left: 0;
+  list-style: none;
+}
+.registreringer li {
+  padding: 0.75rem;
+  border: 1px solid #84909c;
+  border-radius: 0.35rem;
+  background-color: #f4f6f8;
+}
+.registreringer strong,
+.registreringer span {
+  display: block;
+}
+.registreringer span {
+  color: #52606d;
+}
+.felt-lav,
+.felt-hoej {
+  border-width: 2px;
+  border-color: #8a3d3d;
+}
+.felt-ok {
+  border-width: 2px;
+  border-color: #3d6f52;
+}
