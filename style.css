@@ -145,3 +145,35 @@ caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
 .status-udfoert { background-color: #e7ebef; }
 .status-mangler { border-width: 2px; }
 .status-forsinket { border-style: double; border-width: 3px; }
+
+/* Login-siden: class-selectors og grundlæggende CSS fra lektion 3.
+   Hierarki, læsbar typografi og tydelig hovedhandling fra lektion 10. */
+.login-side {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-style: italic;
+}
+
+.login-overskrift {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #84909c;
+}
+
+.login-side .button-primary {
+  background-color: #7040a0;
+  border-color: #7040a0;
+}
+
+.login-side .button-primary:hover {
+  background-color: #56307d;
+  border-color: #56307d;
+}
+
+.login-side a {
+  color: #7040a0;
+}
+
+.login-side a:focus-visible,
+.login-side button:focus-visible,
+.login-side input:focus-visible {
+  outline-color: #7040a0;
+}
