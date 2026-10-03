@@ -1,0 +1,147 @@
+/* Fælles style.css: login, patientliste og dataindtastning.
+   Farver og typografi ændres her for hele gruppen.
+   Én .button-primary pr. side. Sekundære handlinger er neutrale.
+   Lektion 10: hierarki, konsistens, gruppering og tilgængelighed. */
+
+/* Grundstil */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background-color: #f4f6f8;
+  color: #202a35;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+h1, h2, h3 { line-height: 1.25; overflow-wrap: anywhere; }
+h1 { margin: 0 0 1rem; font-size: 2rem; }
+h2 { margin: 2rem 0 0.75rem; font-size: 1.5rem; }
+h3 { margin: 1.5rem 0 0.75rem; font-size: 1.125rem; }
+p { margin: 0 0 1rem; }
+a { color: #2457a7; text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+img { max-width: 100%; height: auto; }
+
+/* Samme ramme på alle sider. Patientlisten har plads til flere kolonner. */
+.kort {
+  width: 92%;
+  max-width: 30rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #84909c;
+  border-radius: 0.5rem;
+}
+.patientoversigt { max-width: 68rem; }
+.kort > :last-child { margin-bottom: 0; }
+
+/* Formularer: label tæt på feltet, luft mellem felterne */
+label { display: block; margin-bottom: 0.35rem; font-weight: bold; }
+input, select, textarea, button { font: inherit; }
+input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #84909c;
+  border-radius: 0.35rem;
+  color: #202a35;
+  background-color: #ffffff;
+}
+textarea { min-height: 8rem; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #52606d; opacity: 1; }
+.form-field { margin-bottom: 1.25rem; }
+.form-field input { margin-bottom: 0; }
+fieldset { min-width: 0; margin: 0 0 1.5rem; padding: 1rem; border: 1px solid #84909c; }
+legend { padding: 0 0.5rem; font-weight: bold; }
+
+/* Hovedhandling blå; rollevalg og log ud er sekundære */
+button, .button {
+  display: inline-block;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid #84909c;
+  border-radius: 0.35rem;
+  color: #202a35;
+  background-color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  cursor: pointer;
+}
+button:hover, .button:hover { background-color: #e7ebef; }
+.button-primary { background-color: #2457a7; border-color: #2457a7; color: #ffffff; }
+.button-primary:hover { background-color: #193e78; border-color: #193e78; }
+form .button-primary { width: 100%; }
+.valgt-rolle { background-color: #e7ebef; border: 2px solid #202a35; text-decoration: underline; }
+#rolle-besked { margin-top: 0.75rem; }
+button:disabled { background-color: #e7ebef; color: #52606d; cursor: not-allowed; }
+
+/* Synligt tastaturfokus på links, knapper, felter og tabelområdet */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, .table-scroll:focus-visible {
+  outline: 3px solid #2457a7;
+  outline-offset: 3px;
+}
+
+/* Status forklares også med tekst, ikke kun farve.
+   Blå er forbeholdt links og hovedhandlinger. */
+.planlagt { color: #52606d; font-weight: bold; }
+.udfoert { color: #202a35; font-weight: bold; }
+.skjult, [hidden] { display: none; }
+#besked:not(:empty), #maaling-besked:not(:empty) {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background-color: #f4f6f8;
+  border-left: 4px solid #202a35;
+}
+
+/* Tabeller: vandret scroll holder indholdet inden for mobilskærmen */
+.table-scroll { max-width: 100%; overflow-x: auto; margin-bottom: 1.5rem; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem; border: 1px solid #84909c; text-align: left; vertical-align: top; }
+th { background-color: #e7ebef; }
+.patientoversigt table { min-width: 42rem; }
+caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
+
+/* Små skærme og zoom */
+@media (max-width: 36rem) {
+  .kort { margin: 1.25rem auto; padding: 1.25rem; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.35rem; }
+}
+
+/* Projektets one-pager: dagens måling skal være nem at finde.
+   Brug .maaleplan til dagens dato, tidspunkt og status samlet.
+   Behold den blå accent til den primære handling. */
+.maaleplan {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f4f6f8;
+  border: 1px solid #84909c;
+  border-left: 4px solid #202a35;
+  border-radius: 0.35rem;
+}
+.maaleplan h2 { margin-top: 0; }
+.maaleplan > :last-child { margin-bottom: 0; }
+
+/* Status på måleforløbet, ikke vurdering af blodsukkerværdien.
+   Skriv status som tekst i HTML. Kantformen supplerer teksten.
+   Eksempel: <span class="status status-mangler">Mangler</span> */
+.status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #52606d;
+  border-radius: 0.35rem;
+  background-color: #ffffff;
+  color: #202a35;
+  font-size: 0.9375rem;
+  font-weight: bold;
+}
+.status-planlagt { border-style: dashed; }
+.status-udfoert { background-color: #e7ebef; }
+.status-mangler { border-width: 2px; }
+.status-forsinket { border-style: double; border-width: 3px; }
