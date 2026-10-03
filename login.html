@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log ind - Diabetesmåleforløb</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="login.js" defer></script>
+</head>
+<body>
+  <main class="kort">
+    <h1>Log ind</h1>
+    <p>Diabetesmåleforløb</p>
+    <p>Få overblik over din måleplan og dine registrerede blodsukkermålinger.</p>
+    <p>Dette er en demo. Brug et fiktivt brugernavn og en opdigtet adgangskode.</p>
+
+    <!-- Rolleknapperne ændrer den valgte rolle i JavaScript. -->
+    <h2>Vælg din rolle</h2>
+    <button id="patient-knap" type="button">Patient</button>
+    <button id="personale-knap" type="button">Sundhedspersonale</button>
+    <p id="rolle-besked" role="status">Vælg en rolle, før du logger ind.</p>
+
+    <!-- required sørger for, at loginfelterne ikke er tomme. -->
+    <form id="login-form">
+      <div class="form-field">
+        <label for="brugernavn">Brugernavn</label>
+        <input id="brugernavn" type="text" required>
+      </div>
+      <div class="form-field">
+        <label for="adgangskode">Adgangskode</label>
+        <input id="adgangskode" type="password" required>
+      </div>
+      <button type="submit" class="button-primary">Log ind</button>
+      <p id="besked" role="status"></p>
+    </form>
+
+    <!-- Sekundær navigation, så gruppen kan klikke rundt i mockuppet. -->
+    <p>Du kan også åbne patientlisten direkte i demoen:</p>
+    <p><a href="patientliste.html" class="button">Videre til patientlisten</a></p>
+  </main>
+</body>
+</html>
