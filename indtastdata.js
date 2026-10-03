@@ -1,4 +1,4 @@
-// D1-demo: Siden bruger kun syntetiske data i browseren.
+// D1-mockup: Siden bruger kun syntetiske testdata i browseren.
 // CPR, adgangskoder og rigtige patientoplysninger gemmes ikke.
 const formular = document.getElementById("maaling-form");
 const maalingstypeFelt = document.getElementById("maalingstype");
@@ -16,7 +16,7 @@ const plan = {
   ekstra: { navn: "Ekstra måling", tid: "Ikke planlagt" }
 };
 
-const lagerNoegle = "s3_demo_registreringer";
+const lagerNoegle = "s3_mockup_registreringer";
 let registreringer = hentRegistreringer();
 
 saetPlanlagtTidspunkt();
@@ -84,15 +84,15 @@ function beskrivVaerdi() {
   }
   if (vaerdi < 4) {
     blodsukkerFelt.classList.add("felt-lav");
-    return vaerdi.toFixed(1) + " mmol/L - lav demo-værdi";
+    return vaerdi.toFixed(1) + " mmol/L - lav testværdi";
   }
   if (vaerdi > 10) {
     blodsukkerFelt.classList.add("felt-hoej");
-    return vaerdi.toFixed(1) + " mmol/L - høj demo-værdi";
+    return vaerdi.toFixed(1) + " mmol/L - høj testværdi";
   }
 
   blodsukkerFelt.classList.add("felt-ok");
-  return vaerdi.toFixed(1) + " mmol/L - inden for demo-interval";
+  return vaerdi.toFixed(1) + " mmol/L - inden for testinterval";
 }
 
 function tegnPreview() {
@@ -126,7 +126,7 @@ function gemMaaling(event) {
   registreringer = [nyRegistrering, ...registreringer].slice(0, 5);
   gemRegistreringer();
   tegnRegistreringer();
-  besked.innerText = "Målingen er gemt i demoen.";
+  besked.innerText = "Målingen er gemt i mockuppet.";
   formular.reset();
   saetPlanlagtTidspunkt();
   tegnPreview();
@@ -167,5 +167,5 @@ function rydRegistreringer() {
   registreringer = [];
   localStorage.removeItem(lagerNoegle);
   tegnRegistreringer();
-  besked.innerText = "Demo-data er ryddet.";
+  besked.innerText = "Testdata er ryddet.";
 }
