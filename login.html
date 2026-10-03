@@ -11,19 +11,25 @@
   <main class="kort">
     <h1 class="login-overskrift">Log ind</h1>
     <p>Diabetesmåleforløb</p>
-    <p>Vælg en persona til den klikbare mockup.</p>
+    <p>Få overblik over din måleplan og dine registrerede blodsukkermålinger.</p>
 
+   
+    <h2>Vælg din rolle</h2>
+    <button id="patient-knap" type="button">Patient</button>
+    <button id="personale-knap" type="button">Sundhedspersonale</button>
+    <p id="rolle-besked" role="status">Vælg en rolle, før du logger ind.</p>
+
+    
     <form id="login-form">
       <div class="form-field">
-        <label for="persona">Persona</label>
-        <select id="persona" required>
-          <option value="amina">Amina Karlsen - patient</option>
-          <option value="jonas">Jonas Mikkelsen - patient</option>
-          <option value="sara">Sara Nielsen - sundhedspersonale</option>
-        </select>
+        <label for="brugernavn">Brugernavn</label>
+        <input id="brugernavn" type="text" required>
       </div>
-
-      <button type="submit" class="button-primary">Fortsæt</button>
+      <div class="form-field">
+        <label for="adgangskode">Adgangskode</label>
+        <input id="adgangskode" type="password" required>
+      </div>
+      <button type="submit" class="button-primary">Log ind</button>
       <p id="besked" role="status"></p>
     </form>
   </main>
