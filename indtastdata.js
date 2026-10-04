@@ -2,28 +2,13 @@
 const formular = document.getElementById("maaling-form");
 const blodsukkerFelt = document.getElementById("blodsukker");
 const besked = document.getElementById("maaling-besked");
-const planlagtTidspunkt = document.getElementById("planlagt-tidspunkt");
 const maaleStatus = document.getElementById("maale-status");
 
 const lagerNoegle = "s3_seneste_blodsukkermaaling";
 
-visPlanlagtTidspunkt();
 visSenesteMaaling();
 
 formular.addEventListener("submit", registrerMaaling);
-
-function visPlanlagtTidspunkt() {
-  const planlagt = new Date();
-  planlagt.setHours(8, 0, 0, 0);
-
-  planlagtTidspunkt.innerText = planlagt.toLocaleString("da-DK", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-}
 
 function registrerMaaling(event) {
   event.preventDefault();
