@@ -11,11 +11,10 @@
   <main class="kort">
     <h1>Registrer blodsukker</h1>
     <p>Her kan du indtaste din blodsukkermåling.</p>
-    <p>Brug kun fiktive værdier i denne prototype.</p>
 
     <section class="maaleplan" aria-labelledby="dagens-plan">
       <h2 id="dagens-plan">Din måleplan</h2>
-      <p>Planlagt måling: <strong id="planlagt-tidspunkt">Indlæser...</strong></p>
+      <p>Planlagt måling: <strong>20. oktober 2026 kl. 09.00</strong></p>
       <p>Status: <span class="status status-planlagt" id="maale-status">Planlagt</span></p>
     </section>
 
@@ -24,7 +23,7 @@
 
       <div class="form-field">
         <label for="blodsukker">Blodsukker i mmol/L</label>
-        <input id="blodsukker" type="number" min="1" max="30" step="0.1" placeholder="fx 6.8" required>
+        <input id="blodsukker" type="number" min="0" step="0.1" inputmode="decimal" placeholder="fx 6.8" required>
       </div>
 
       <button type="submit" class="button-primary">Registrer måling</button>
