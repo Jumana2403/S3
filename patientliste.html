@@ -5,25 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patientliste - Diabetesmåleforløb</title>
   <link rel="stylesheet" href="style.css">
+  <script src="patientliste.js" defer></script>
 </head>
 <body>
   <main class="kort patientoversigt">
     <header>
       <h1>Patientliste</h1>
-      <p>Overblik over patienternes måleplaner og dagens registreringer.</p>
-      <p>Alle patienter og målinger er fiktive eksempeldata til mockuppet.</p>
-      <p>
-        <a class="button" href="login.html">Login</a>
-        <a class="button" href="indtastdata.html">Indtast data</a>
-      </p>
+      <p>Overblik over patienternes måleplaner og registrerede blodsukkermålinger.</p>
+      <p>Navnene bruges som eksempelpersoner. Alle målinger er opdigtede demodata.</p>
     </header>
 
     <section>
       <h2>Patienternes måleforløb</h2>
-      <p>
-        <button id="vis-alle" type="button">Vis alle patienter</button>
-        <button id="vis-manglende" type="button">Vis manglende målinger</button>
-      </p>
       <p id="liste-besked"></p>
       <div class="table-scroll">
         <table>
@@ -32,87 +25,22 @@
             <tr>
               <th scope="col">Navn</th>
               <th scope="col">Måleplan</th>
-              <th scope="col">Registreret i dag</th>
+              <th scope="col">Blodsukker (mmol/L)</th>
+              <th scope="col">Måletidspunkt</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody id="patienter"></tbody>
         </table>
       </div>
-      <p>Status viser registreringer i forhold til måleplanen.</p>
+      <p>Hver eksempelperson har én registreret måling. Status angiver registreringen i forhold til måleplanen.</p>
     </section>
 
     <footer>
-      <p><a class="button" href="indtastdata.html">Gå til indtastning af måling</a></p>
-      <p>Indtastningssiden er en fælles demoside. Patientvalget overføres ikke.</p>
-      <p><a href="index.html">Tilbage til forsiden</a></p>
+      <p><a class="button button-primary" href="login.html">Tilbage til login</a></p>
     </footer>
   </main>
 
-  <script>
-    const patienter = [
-      { navn: "Amina Karlsen", plan: "Morgen, middag og aften", registreret: "1 af 3", status: "Mangler 2 målinger", klasse: "status-mangler", mangler: true },
-      { navn: "Jonas Mikkelsen", plan: "Morgen og aften", registreret: "0 af 2", status: "Planlagt", klasse: "status-planlagt", mangler: false },
-      { navn: "Sofie Nielsen", plan: "Morgen og aften", registreret: "2 af 2", status: "Alle udført", klasse: "status-udfoert", mangler: false },
-      { navn: "Lars Hansen", plan: "Morgen, middag og aften", registreret: "3 af 3", status: "En måling registreret for sent", klasse: "status-forsinket", mangler: false }
-    ];
 
-    const liste = document.getElementById("patienter");
-    const besked = document.getElementById("liste-besked");
-    const alleKnap = document.getElementById("vis-alle");
-    const manglendeKnap = document.getElementById("vis-manglende");
-
-    function visPatienter(kunManglende) {
-      liste.innerHTML = "";
-      let antal = 0;
-
-      for (const patient of patienter) {
-        if (kunManglende === false || patient.mangler === true) {
-          const raekke = document.createElement("tr");
-          const navn = document.createElement("td");
-          const plan = document.createElement("td");
-          const registreret = document.createElement("td");
-          const status = document.createElement("td");
-          const statusTekst = document.createElement("span");
-
-          navn.textContent = patient.navn;
-          plan.textContent = patient.plan;
-          registreret.textContent = patient.registreret;
-          statusTekst.textContent = patient.status;
-          statusTekst.classList.add("status", patient.klasse);
-
-          status.append(statusTekst);
-          raekke.append(navn, plan, registreret, status);
-          liste.append(raekke);
-          antal = antal + 1;
-        }
-      }
-
-      alleKnap.classList.remove("button-primary");
-      manglendeKnap.classList.remove("button-primary");
-
-      if (kunManglende === true) {
-        manglendeKnap.classList.add("button-primary");
-        besked.innerText = "Viser " + antal + " patienter med manglende målinger.";
-      } else {
-        alleKnap.classList.add("button-primary");
-        besked.innerText = "Viser alle " + antal + " patienter.";
-      }
-
-      if (antal === 0) {
-        besked.innerText = "Ingen patienter med manglende målinger.";
-      }
-    }
-
-    alleKnap.addEventListener("click", function () {
-      visPatienter(false);
-    });
-
-    manglendeKnap.addEventListener("click", function () {
-      visPatienter(true);
-    });
-
-    visPatienter(false);
-  </script>
 </body>
 </html>
