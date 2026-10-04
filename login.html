@@ -9,7 +9,10 @@
 </head>
 <body class="login-side">
   <main class="kort">
-    <h1 class="login-overskrift">Log ind</h1>
+    <div class="login-overskrift">
+      <h1 class="login-titel">Log ind</h1>
+      <img class="login-logo" src="images/draabe.png" alt="Rød bloddråbe">
+    </div>
     <p>Diabetesmåleforløb</p>
     <p>Få overblik over din måleplan og dine registrerede blodsukkermålinger.</p>
 
@@ -17,7 +20,7 @@
     <h2>Vælg din rolle</h2>
     <button id="patient-knap" type="button">Patient</button>
     <button id="personale-knap" type="button">Sundhedspersonale</button>
-    <p id="rolle-besked" role="status">Vælg en rolle, før du logger ind.</p>
+    <p id="rolle-besked">Vælg en rolle, før du logger ind.</p>
 
     
     <form id="login-form">
@@ -30,8 +33,9 @@
         <input id="adgangskode" type="password" required>
       </div>
       <button type="submit" class="button-primary">Log ind</button>
-      <p id="besked" role="status"></p>
+      <p id="besked"></p>
     </form>
+    <p><a href="index.html">Tilbage til forsiden</a></p>
   </main>
 </body>
 </html>
