@@ -29,11 +29,11 @@ function logInd(event) {
   besked.innerText = "";
 
   if (brugernavnFelt.value.trim() === "") {
-    besked.innerText = "Skriv et brugernavn. Det må ikke kun være mellemrum.";
+    besked.innerText = "Udfyld feltet Brugernavn";
     return;
   }
   if (adgangskodeFelt.value.trim() === "") {
-    besked.innerText = "Skriv en opdigtet adgangskode. Den må ikke kun være mellemrum.";
+    besked.innerText = "Udfyld feltet Adgangskode";
     return;
   }
 
