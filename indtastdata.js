@@ -10,17 +10,29 @@ function registrerMaaling(event) {
 
   const vaerdi = Number(blodsukkerFelt.value);
 
-  if (blodsukkerFelt.value.trim() === "") {
+  if (feltErTomt()) {
     besked.innerText = "Indtast en blodsukkerværdi først.";
     return;
   }
-  if (vaerdi < 0) {
+  if (vaerdiErNegativ(vaerdi)) {
     besked.innerText = "Blodsukkerværdien kan ikke være negativ.";
     return;
   }
 
-  maaleStatus.innerText = "Registreret";
-  maaleStatus.className = "status status-udfoert";
+  markerSomRegistreret();
   besked.innerText = "Målingen på " + vaerdi.toFixed(1) + " mmol/L er registreret.";
   formular.reset();
+}
+
+function feltErTomt() {
+  return blodsukkerFelt.value.trim() === "";
+}
+
+function vaerdiErNegativ(vaerdi) {
+  return vaerdi < 0;
+}
+
+function markerSomRegistreret() {
+  maaleStatus.innerText = "Registreret";
+  maaleStatus.className = "status status-udfoert";
 }
