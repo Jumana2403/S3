@@ -12,7 +12,7 @@ function vaelgPatient() {
   valgtRolle = "patient";
   patientKnap.classList.add("valgt-rolle");
   personaleKnap.classList.remove("valgt-rolle");
-  rolleBesked.innerText = "Du har valgt: Patient";
+  rolleBesked.innerText = "Du er en Patient";
   besked.innerText = "";
 }
 
@@ -20,7 +20,7 @@ function vaelgPersonale() {
   valgtRolle = "personale";
   personaleKnap.classList.add("valgt-rolle");
   patientKnap.classList.remove("valgt-rolle");
-  rolleBesked.innerText = "Du har valgt: Sundhedspersonale";
+  rolleBesked.innerText = "Du er en Sundhedspersonale";
   besked.innerText = "";
 }
 
@@ -29,11 +29,11 @@ function logInd(event) {
   besked.innerText = "";
 
   if (brugernavnFelt.value.trim() === "") {
-    besked.innerText = "Udfyld feltet Brugernavn";
+    besked.innerText = "Udfyld ";
     return;
   }
   if (adgangskodeFelt.value.trim() === "") {
-    besked.innerText = "Udfyld feltet Adgangskode";
+    besked.innerText = "Udfyld";
     return;
   }
 
