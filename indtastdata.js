@@ -11,11 +11,11 @@ function registrerMaaling(event) {
   const vaerdi = Number(blodsukkerFelt.value);
 
   if (feltErTomt()) {
-    besked.innerText = "Indtast en blodsukkerværdi først.";
+    besked.innerText = "Indtast En Blodsukkerværdi Først.";
     return;
   }
   if (vaerdiErNegativ(vaerdi)) {
-    besked.innerText = "Blodsukkerværdien kan ikke være negativ.";
+    besked.innerText = "Blodsukkerværdien Kan Ikke Være Negativ.";
     return;
   }
 
