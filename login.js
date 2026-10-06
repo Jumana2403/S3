@@ -28,15 +28,7 @@ function logInd(event) {
   event.preventDefault();
   besked.innerText = "";
 
-  if (brugernavnFelt.value.trim() === "") {
-    besked.innerText = "Udfyld ";
-    return;
-  }
-  if (adgangskodeFelt.value.trim() === "") {
-    besked.innerText = "Udfyld";
-    return;
-  }
-
+  
   if (valgtRolle === "patient") {
     window.location.href = "indtastdata.html";
   } else if (valgtRolle === "personale") {
