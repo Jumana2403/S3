@@ -1,7 +1,4 @@
-/* Fælles stil */
-
 /* Grundstil */
-* { box-sizing: border-box; }
 body {
   margin: 0;
   background-color: #f4f6f8;
@@ -10,54 +7,48 @@ body {
   font-size: 1rem;
   line-height: 1.6;
 }
-h1, h2, h3 { line-height: 1.25; overflow-wrap: anywhere; }
 h1 { margin: 0 0 1rem; font-size: 2rem; }
 h2 { margin: 2rem 0 0.75rem; font-size: 1.5rem; }
 h3 { margin: 1.5rem 0 0.75rem; font-size: 1.125rem; }
 p { margin: 0 0 1rem; }
-a { color: #7040a0; text-underline-offset: 0.2em; }
-a:hover { text-decoration-thickness: 2px; }
+a { color: #7040a0; }
 img { max-width: 100%; height: auto; }
 
 /* Sidens ramme */
 .kort {
-  width: 92%;
-  max-width: 30rem;
+  width: 80%;
+  max-width: 27rem;
   margin: 2.5rem auto;
   padding: 1.5rem;
   background-color: #ffffff;
   border: 1px solid #84909c;
   border-radius: 0.5rem;
 }
-.patientoversigt { max-width: 68rem; }
-.kort > :last-child { margin-bottom: 0; }
+.patientoversigt { max-width: 65rem; }
 
 /* Formularer */
 label { display: block; margin-bottom: 0.35rem; font-weight: bold; }
-input, select, textarea, button { font: inherit; }
+input, select, textarea, button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
 input, select, textarea {
   display: block;
-  width: 100%;
-  min-height: 2.75rem;
+  width: 89%;
   margin-bottom: 1.25rem;
-  padding: 0.65rem 0.75rem;
+  padding: 0.65rem 5%;
   border: 1px solid #84909c;
   border-radius: 0.35rem;
   color: #202a35;
   background-color: #ffffff;
 }
-textarea { min-height: 8rem; resize: vertical; }
-input::placeholder, textarea::placeholder { color: #52606d; opacity: 1; }
+textarea { height: 8rem; }
 .form-field { margin-bottom: 1.25rem; }
 .form-field input { margin-bottom: 0; }
-fieldset { min-width: 0; margin: 0 0 1.5rem; padding: 1rem; border: 1px solid #84909c; }
-legend { padding: 0 0.5rem; font-weight: bold; }
 
 /* Knapper */
 button, .button {
   display: inline-block;
-  max-width: 100%;
-  min-height: 2.75rem;
   padding: 0.65rem 1.1rem;
   border: 1px solid #84909c;
   border-radius: 0.35rem;
@@ -66,49 +57,38 @@ button, .button {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  white-space: normal;
-  cursor: pointer;
 }
 button:hover, .button:hover { background-color: #e7ebef; }
-.button-primary { background-color: #7040a0; border-color: #7040a0; color: #ffffff; }
-.button-primary:hover { background-color: #56307d; border-color: #56307d; }
-form .button-primary { width: 100%; }
-.valgt-rolle { background-color: #e7ebef; border: 2px solid #202a35; text-decoration: underline; }
-#rolle-besked { margin-top: 0.75rem; }
-button:disabled { background-color: #e7ebef; color: #52606d; cursor: not-allowed; }
-
-/* Fokus ved brug af tastatur */
-a:focus-visible, button:focus-visible, input:focus-visible,
-select:focus-visible, textarea:focus-visible, .table-scroll:focus-visible {
-  outline: 3px solid #7040a0;
-  outline-offset: 3px;
+.button-primary {
+  background-color: #7040a0;
+  border: 1px solid #7040a0;
+  color: #ffffff;
 }
+.button-primary:hover { background-color: #56307d; }
+form .button-primary { width: 100%; padding: 0.65rem 0; }
+.valgt-rolle {
+  background-color: #e7ebef;
+  border: 2px solid #202a35;
+  text-decoration: underline;
+}
+#rolle-besked { margin-top: 0.75rem; }
 
 /* Beskeder */
 .planlagt { color: #52606d; font-weight: bold; }
 .udfoert { color: #202a35; font-weight: bold; }
-.skjult, [hidden] { display: none; }
-#besked:not(:empty), #maaling-besked:not(:empty) {
-  margin-top: 1rem;
-  padding: 0.85rem;
-  background-color: #f4f6f8;
-  border-left: 4px solid #202a35;
-}
+.skjult { display: none; }
+#besked, #maaling-besked { margin-top: 1rem; }
 
-/* Tabeller */
-.table-scroll { max-width: 100%; overflow-x: auto; margin-bottom: 1.5rem; }
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 0.75rem; border: 1px solid #84909c; text-align: left; vertical-align: top; }
+/* Patientliste */
+table { width: 100%; }
+th, td {
+  padding: 0.5rem;
+  border: 1px solid #84909c;
+  text-align: left;
+}
 th { background-color: #e7ebef; }
-.patientoversigt table { min-width: 42rem; }
 caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
-
-/* Små skærme */
-@media (max-width: 36rem) {
-  .kort { margin: 1.25rem auto; padding: 1.25rem; }
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.35rem; }
-}
+.table-scroll { margin-bottom: 1.5rem; }
 
 /* Måleplan */
 .maaleplan {
@@ -116,13 +96,9 @@ caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
   padding: 1rem;
   background-color: #f4f6f8;
   border: 1px solid #84909c;
-  border-left: 4px solid #202a35;
   border-radius: 0.35rem;
 }
 .maaleplan h2 { margin-top: 0; }
-.maaleplan > :last-child { margin-bottom: 0; }
-
-/* Status på målingen */
 .status {
   display: inline-block;
   padding: 0.2rem 0.6rem;
@@ -139,11 +115,6 @@ caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
 .status-forsinket { border: 3px double #52606d; }
 
 /* Login */
-.login-side {
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  font-style: italic;
-}
-
 .login-overskrift {
   display: flex;
   justify-content: space-between;
@@ -152,7 +123,5 @@ caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #84909c;
 }
-
 .login-titel { margin: 0; }
 .login-logo { width: 32px; }
-
