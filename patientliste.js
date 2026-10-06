@@ -1,7 +1,6 @@
 const patienter = [
-  { navn: "Alma Kari", plan: "Morgen kl. 09.00", maaling: "6,8", tidspunkt: "4. oktober 2026 kl. 09.00" },
-  { navn: "Hager Rahdi", plan: "Morgen kl. 09.00", maaling: "7,2", tidspunkt: "4. oktober 2026 kl. 09.00" },
-  { navn: "Jumana Thammer", plan: "Morgen kl. 09.00", maaling: "6,1", tidspunkt: "4. oktober 2026 kl. 09.00" }
+  { navn: "Mette", plan: "Morgen kl. 09:00", maaling: "6,8", tidspunkt: "20. oktober 2026 kl 09:00" },
+  { navn: "Kasper", plan: "Morgen kl. 09:00", maaling: "7,2", tidspunkt: "20. oktober 2026 kl 09:00" }
 ];
 
 const liste = document.getElementById("patienter");
