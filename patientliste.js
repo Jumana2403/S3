@@ -1,6 +1,6 @@
 const patienter = [
-  { navn: "Mette", plan: "Morgen kl. 09:00", maaling: "6,8", tidspunkt: "20. oktober 2026 kl 09:00" },
-  { navn: "Kasper", plan: "Morgen kl. 09:00", maaling: "7,2", tidspunkt: "20. oktober 2026 kl 09:00" }
+  { navn: "Mette", plan: "Morgen kl. 09:00", maaling: "6,8", tidspunkt: "5. oktober 2026 kl 09:00" },
+  { navn: "Kasper", plan: "Aften kl. 20:00", maaling: "7,2", tidspunkt: "5. oktober 2026 kl 20:00" }
 ];
 
 const liste = document.getElementById("patienter");
