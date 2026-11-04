@@ -1,0 +1,17 @@
+### Alle patienter
+GET http://localhost:3000/api/patients
+
+### Patient 1
+GET http://localhost:3000/api/patients/1
+
+### Tilføj en testpatient
+POST http://localhost:3000/api/patients
+Content-Type: application/json
+
+{"id":"3","cpr":"0201029994","navn":"Testpatient"}
+
+### Prøv uden data
+POST http://localhost:3000/api/patients
+
+### Prøv en patient der ikke findes
+GET http://localhost:3000/api/patients/findes-ikke
