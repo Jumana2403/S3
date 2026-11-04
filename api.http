@@ -8,7 +8,7 @@ GET http://localhost:3000/api/patients/1
 POST http://localhost:3000/api/patients
 Content-Type: application/json
 
-{"id":"3","cpr":"0201029994","navn":"Testpatient"}
+{"cpr":"0201029994","navn":"Testpatient"}
 
 ### Prøv uden data
 POST http://localhost:3000/api/patients

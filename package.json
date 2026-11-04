@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Jumana2403/S3#readme",
   "dependencies": {
-    "express": "^5.3.0"
-  }
+    "express": "^5.3.0",
+    "pg": "^8.23.1"
+  },
+  "type": "module"
 }
