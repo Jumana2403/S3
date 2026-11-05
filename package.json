@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Jumana2403/S3#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.3.0",
     "pg": "^8.23.1"
   },
