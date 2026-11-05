@@ -15,3 +15,18 @@ POST http://localhost:3000/api/patients
 
 ### Prøv en patient der ikke findes
 GET http://localhost:3000/api/patients/findes-ikke
+
+### Hent målinger
+GET http://localhost:3000/api/maalinger
+
+### Gem en testmåling (brug et ledigt måleplan-ID)
+POST http://localhost:3000/api/maalinger
+Content-Type: application/json
+
+{"maaleplan_id":2,"blodsukker":5.9,"maalt_tid":"2026-10-05 09:05:00"}
+
+### Prøv uden blodsukkerværdi
+POST http://localhost:3000/api/maalinger
+Content-Type: application/json
+
+{"maaleplan_id":2,"maalt_tid":"2026-10-05 09:05:00"}
