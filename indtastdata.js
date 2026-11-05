@@ -19,6 +19,12 @@ function registrerMaaling(event) {
     return;
   }
 
+  const maaleplanId = Number(document.getElementById("maaleplan-id").value);
+  if (!Number.isInteger(maaleplanId) || maaleplanId < 1) {
+    besked.innerText = "Måletiden mangler eller er ugyldig.";
+    return;
+  }
+
   markerSomRegistreret();
   besked.innerText = "Målingen på " + vaerdi.toFixed(1) + " mmol/L er registreret.";
   formular.reset();
