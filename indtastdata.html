@@ -9,17 +9,17 @@
 </head>
 <body>
   <main class="kort">
-    <h1>Registrer Blodsukker</h1>
-    <p>Her Kan Du Indtaste Din Blodsukkermåling.</p>
+    <h1>Registrer blodsukker</h1>
+    <p>Her kan du indtaste din blodsukkermåling.</p>
 
     <section class="maaleplan" aria-labelledby="dagens-plan">
       <h2 id="dagens-plan">Din måleplan</h2>
-      <p>Planlagt måling: <strong>5. oktober 2026 kl. 09.00</strong></p>
+      <p>Planlagt måling: <strong>6. oktober 2026 kl. 09.00</strong></p>
       <p>Status: <span class="status status-planlagt" id="maale-status">Planlagt</span></p>
     </section>
 
     <form id="maaling-form">
-      <input type="hidden" id="maaleplan-id" name="maaleplan_id" value="2">
+      <input type="hidden" id="maaleplan-id" name="maaleplan_id" value="4">
       <h2>Indtast den planlagte måling</h2>
 
       <div class="form-field">
@@ -27,11 +27,16 @@
         <input id="blodsukker" type="number" min="0" step="0.1" inputmode="decimal" placeholder="fx 6.8" required>
       </div>
 
+      <div class="form-field">
+        <label for="maalt-tid">Hvornår målte du dit blodsukker?</label>
+        <input id="maalt-tid" name="maalt_tid" type="datetime-local" required>
+      </div>
+
       <button type="submit" class="button-primary">Registrer måling</button>
       <p id="maaling-besked" role="status"></p>
     </form>
 
-    <p><a class="button" href="login.html">Tilbage til login</a></p>
+    <p><a class="button" href="#dagens-plan">Tilbage til din måleplan</a></p>
   </main>
 </body>
 </html>
