@@ -27,7 +27,16 @@ async function hentPatienter() {
       id.textContent = patient.id;
       navn.textContent = patient.navn;
       link.textContent = "Se måleforløb for " + patient.navn;
-      link.href = "patientdetalje.html?id=" + patient.id;
+      link.href = "patientdetalje.html";
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        try {
+          sessionStorage.setItem("s3_valgt_patient_id", patient.id);
+          window.location.href = "patientdetalje.html";
+        } catch {
+          besked.innerText = "Patienten kunne ikke åbnes. Tillad browserlager for siden, og prøv igen.";
+        }
+      });
       link.classList.add("button");
 
       handling.append(link);
