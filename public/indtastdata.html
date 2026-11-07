@@ -14,12 +14,15 @@
 
     <section class="maaleplan" aria-labelledby="dagens-plan">
       <h2 id="dagens-plan">Din måleplan</h2>
-      <p>Planlagt måling: <strong>6. oktober 2026 kl. 09.00</strong></p>
-      <p>Status: <span class="status status-planlagt" id="maale-status">Planlagt</span></p>
+      <p>Demo: syntetisk patient-ID 1. Login er en mockup.</p>
+      <label for="maaleplan-id">Vælg planlagt måletid</label>
+      <select id="maaleplan-id" name="maaleplan_id" disabled>
+        <option value="">Henter måletider …</option>
+      </select>
+      <p>Status: <span class="status status-planlagt" id="maale-status">Henter …</span></p>
     </section>
 
     <form id="maaling-form">
-      <input type="hidden" id="maaleplan-id" name="maaleplan_id" value="4">
       <h2>Indtast den planlagte måling</h2>
 
       <div class="form-field">
@@ -32,11 +35,11 @@
         <input id="maalt-tid" name="maalt_tid" type="datetime-local" required>
       </div>
 
-      <button type="submit" class="button-primary">Registrer måling</button>
+      <button type="submit" class="button-primary" disabled>Registrer måling</button>
       <p id="maaling-besked" role="status"></p>
     </form>
 
-    <p><a class="button" href="#dagens-plan">Tilbage til din måleplan</a></p>
+    <p><a class="button" href="#dagens-plan">Se din måleplan</a></p>
   </main>
 </body>
 </html>
