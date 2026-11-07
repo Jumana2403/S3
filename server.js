@@ -1,13 +1,17 @@
 import express from "express";
 import cors from "cors";
+import { fileURLToPath } from "node:url";
 import { hentPatienter, hentPatient, opretPatient } from "./patients.js";
 
-import { hentMaalinger, hentMaaleplan, opretMaaling } from "./maalinger.js";
+import { hentMaalinger, hentMaaleplan, hentPlanlagteMaaletider, opretMaaling } from "./maalinger.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+const publicMappe = fileURLToPath(new URL("./public/", import.meta.url));
+app.use(express.static(publicMappe));
 
 app.get("/api/patients", async (req, res) => {
   try {
@@ -30,6 +34,24 @@ app.get("/api/patients/:id", async (req, res) => {
       return res.status(404).json({ error: "Patienten findes ikke" });
     }
     res.json(patient);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "serverfejl" });
+  }
+});
+
+app.get("/api/patients/:id/maaleplaner", async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1 || id > 2147483647) {
+    return res.status(400).json({ error: "Ugyldigt patient-ID" });
+  }
+
+  try {
+    const patient = await hentPatient(id);
+    if (!patient) {
+      return res.status(404).json({ error: "Patienten findes ikke" });
+    }
+    res.json(await hentPlanlagteMaaletider(id));
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "serverfejl" });

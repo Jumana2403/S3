@@ -13,6 +13,14 @@ export async function hentMaalinger() {
   return result.rows;
 }
 
+export async function hentPlanlagteMaaletider(patientId) {
+  const result = await pool.query(
+    "SELECT id AS maaleplan_id, planlagt_tid FROM maaleplaner WHERE patient_id = $1 ORDER BY planlagt_tid, id",
+    [patientId]
+  );
+  return result.rows;
+}
+
 export async function hentMaaleplan(id) {
   const result = await pool.query("SELECT id FROM maaleplaner ORDER BY id");
   return result.rows.find(plan => plan.id === id);
