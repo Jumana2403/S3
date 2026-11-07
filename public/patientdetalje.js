@@ -1,5 +1,4 @@
-const parametre = new URLSearchParams(window.location.search);
-const patientId = Number(parametre.get("id"));
+let patientId = 0;
 
 const navn = document.getElementById("patient-navn");
 const idTekst = document.getElementById("patient-id");
@@ -7,7 +6,14 @@ const liste = document.getElementById("maaleplan");
 const besked = document.getElementById("detalje-besked");
 
 async function hentPatientforloeb() {
-  if (!Number.isInteger(patientId) || patientId < 1 || patientId > 2147483647) {
+  try {
+    patientId = Number(sessionStorage.getItem("s3_valgt_patient_id"));
+  } catch {
+    besked.innerText = "Patientvalget kunne ikke læses. Tillad browserlager for siden, og vælg en patient fra patientlisten.";
+    return;
+  }
+
+  if (!(patientId > 0)) {
     besked.innerText = "Patient-ID mangler eller er ugyldigt. Vælg en patient fra patientlisten.";
     return;
   }
@@ -54,7 +60,12 @@ function visMaaleplan(planer, maalinger) {
   const nu = new Date();
 
   for (const plan of planer) {
-    const maaling = maalinger.find(maaling => Number(maaling.maaleplan_id) === Number(plan.maaleplan_id));
+    let maaling = null;
+    for (const registrering of maalinger) {
+      if (Number(registrering.maaleplan_id) === Number(plan.maaleplan_id)) {
+        maaling = registrering;
+      }
+    }
     const raekke = document.createElement("tr");
     const planlagtTid = document.createElement("td");
     const faktiskTid = document.createElement("td");
@@ -69,7 +80,7 @@ function visMaaleplan(planer, maalinger) {
 
     if (maaling) {
       faktiskTid.textContent = visTidspunkt(maaling.maalt_tid);
-      blodsukker.textContent = Number(maaling.blodsukker).toFixed(1).replace(".", ",");
+      blodsukker.textContent = maaling.blodsukker;
       statusTekst.textContent = "Registreret";
       statusTekst.classList.add("status-udfoert");
     } else if (new Date(plan.planlagt_tid) < nu) {
@@ -90,7 +101,7 @@ function visTidspunkt(tidspunkt) {
   if (!tidspunkt) {
     return "Tidspunkt ikke oplyst";
   }
-  return new Date(tidspunkt).toLocaleString("da-DK");
+  return tidspunkt;
 }
 
 hentPatientforloeb();
