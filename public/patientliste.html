@@ -11,28 +11,25 @@
   <main class="kort patientoversigt">
     <header>
       <h1>Patientliste</h1>
-      <p>Overblik over patienternes planlagte og registrerede blodsukkermålinger.</p>
-      <p>Navnene er vores personas.</p>
+      <p>Vælg en patient for at se måleplan og registrerede blodsukkermålinger.</p>
+      <p>Patientoplysningerne hentes fra serveren. Data i projektet er syntetiske.</p>
     </header>
 
     <section>
       <h2>Patienternes måleforløb</h2>
-      <p id="liste-besked"></p>
+      <p id="liste-besked">Henter patienter …</p>
       <div class="table-scroll">
         <table>
           <thead>
             <tr>
+              <th>Patient-ID</th>
               <th>Navn</th>
-              <th>Måleplan</th>
-              <th>Blodsukker (mmol/L)</th>
-              <th>Måletidspunkt</th>
-              <th>Status</th>
+              <th>Handling</th>
             </tr>
           </thead>
           <tbody id="patienter"></tbody>
         </table>
       </div>
-      <p>Hver eksempelperson har én registreret måling. Status angiver registreringen i forhold til måleplanen.</p>
     </section>
 
     <footer>

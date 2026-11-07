@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patientens måleforløb - Diabetesmåleforløb</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="patientdetalje.js" defer></script>
+</head>
+<body>
+  <main class="kort patientoversigt">
+    <header>
+      <h1>Patientens måleforløb</h1>
+      <p id="patient-navn"></p>
+      <p id="patient-id"></p>
+    </header>
+
+    <section>
+      <h2>Måleplan og registrerede målinger</h2>
+      <p id="detalje-besked">Henter patientens oplysninger …</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Planlagt tidspunkt</th>
+              <th>Faktisk måletidspunkt</th>
+              <th>Blodsukker (mmol/L)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="maaleplan"></tbody>
+        </table>
+      </div>
+      <p>Planlagt tidspunkt er tiden i måleplanen. Faktisk måletidspunkt er tiden angivet ved registreringen.</p>
+      <p>Planlagte tider uden en måling vises som “Mangler registrering”, når tidspunktet er passeret.</p>
+    </section>
+
+    <footer>
+      <p><a class="button button-primary" href="patientliste.html">Tilbage til patientlisten</a></p>
+    </footer>
+  </main>
+</body>
+</html>
