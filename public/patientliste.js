@@ -1,36 +1,45 @@
-const patienter = [
-  { navn: "Mette", plan: "Morgen kl. 09:00", maaling: "6,8", tidspunkt: "5. oktober 2026 kl 09:00" },
-  { navn: "Kasper", plan: "Aften kl. 20:00", maaling: "7,2", tidspunkt: "5. oktober 2026 kl 20:00" }
-];
-
 const liste = document.getElementById("patienter");
 const besked = document.getElementById("liste-besked");
 
-function visPatienter() {
+async function hentPatienter() {
   liste.innerHTML = "";
+  besked.innerText = "Henter patienter …";
 
-  for (const patient of patienter) {
-    const raekke = document.createElement("tr");
-    const navn = document.createElement("td");
-    const plan = document.createElement("td");
-    const maaling = document.createElement("td");
-    const tidspunkt = document.createElement("td");
-    const status = document.createElement("td");
-    const statusTekst = document.createElement("span");
+  try {
+    const svar = await fetch("/api/patients");
+    if (!svar.ok) {
+      throw new Error("Kunne ikke hente patienterne.");
+    }
+    const patienter = await svar.json();
 
-    navn.textContent = patient.navn;
-    plan.textContent = patient.plan;
-    maaling.textContent = patient.maaling;
-    tidspunkt.textContent = patient.tidspunkt;
-    statusTekst.textContent = "Registreret";
-    statusTekst.classList.add("status", "status-udfoert");
+    if (patienter.length === 0) {
+      besked.innerText = "Der er ingen patienter at vise.";
+      return;
+    }
 
-    status.append(statusTekst);
-    raekke.append(navn, plan, maaling, tidspunkt, status);
-    liste.append(raekke);
+    for (const patient of patienter) {
+      const raekke = document.createElement("tr");
+      const id = document.createElement("td");
+      const navn = document.createElement("td");
+      const handling = document.createElement("td");
+      const link = document.createElement("a");
+
+      id.textContent = patient.id;
+      navn.textContent = patient.navn;
+      link.textContent = "Se måleforløb for " + patient.navn;
+      link.href = "patientdetalje.html?id=" + patient.id;
+      link.classList.add("button");
+
+      handling.append(link);
+      raekke.append(id, navn, handling);
+      liste.append(raekke);
+    }
+
+    besked.innerText = "Viser " + patienter.length + " patienter.";
+  } catch {
+    liste.innerHTML = "";
+    besked.innerText = "Patienterne kunne ikke hentes. Prøv at genindlæse siden.";
   }
-
-  besked.innerText = "Viser " + patienter.length + " eksempelpersoner med én måling hver.";
 }
 
-visPatienter();
+hentPatienter();
