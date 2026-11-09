@@ -8,17 +8,24 @@ pool.on("error", (err) => {
 
 export async function hentMaalinger() {
   const result = await pool.query(
-    "SELECT id, maaleplan_id, blodsukker, maalt_tid::text AS maalt_tid FROM maalinger ORDER BY id"
+    "SELECT id, maaleplan_id, blodsukker, maalt_tid::text FROM maalinger ORDER BY id"
   );
   return result.rows;
 }
 
 export async function hentPlanlagteMaaletider(patientId) {
   const result = await pool.query(
-    "SELECT id AS maaleplan_id, planlagt_tid::text AS planlagt_tid FROM maaleplaner WHERE patient_id = $1 ORDER BY planlagt_tid, id",
+    "SELECT id, planlagt_tid::text FROM maaleplaner WHERE patient_id = $1 ORDER BY planlagt_tid, id",
     [patientId]
   );
-  return result.rows;
+  const maaletider = [];
+  for (const plan of result.rows) {
+    maaletider.push({
+      maaleplan_id: plan.id,
+      planlagt_tid: plan.planlagt_tid
+    });
+  }
+  return maaletider;
 }
 
 export async function hentMaaleplan(id) {
@@ -28,7 +35,7 @@ export async function hentMaaleplan(id) {
 
 export async function opretMaaling(maaleplanId, blodsukker, maaltTid) {
   const result = await pool.query(
-    "INSERT INTO maalinger (maaleplan_id, blodsukker, maalt_tid) VALUES ($1, $2, $3) RETURNING id, maaleplan_id, blodsukker, maalt_tid::text AS maalt_tid",
+    "INSERT INTO maalinger (maaleplan_id, blodsukker, maalt_tid) VALUES ($1, $2, $3) RETURNING id, maaleplan_id, blodsukker, maalt_tid::text",
     [maaleplanId, blodsukker, maaltTid]
   );
   return result.rows[0];
