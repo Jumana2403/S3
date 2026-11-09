@@ -43,7 +43,7 @@ async function hentMaaleplan() {
     }
     maaleplanFelt.disabled = false;
     visValgtMaaletid();
-  } catch {
+  } catch (err) {
     maaleStatus.innerText = "Kunne ikke hente status";
     besked.innerText = "Kunne ikke hente måleplanen. Prøv at genindlæse siden.";
   }
@@ -112,6 +112,7 @@ async function registrerMaaling(event) {
 
     if (svar.status !== 201) {
       besked.innerText = resultat.error || "Målingen kunne ikke gemmes.";
+      opdaterRegistreringsknap(maaleplanId);
       return;
     }
 
@@ -131,15 +132,28 @@ async function registrerMaaling(event) {
       gemteMaalinger = hentedeMaalinger;
       markerSomRegistreret(gemtMaaling.blodsukker);
       besked.innerText = "Din måling er gemt.";
-    } catch {
+    } catch (err) {
       markerSomRegistreret(resultat.blodsukker);
       besked.innerText = "Din måling er gemt, men kunne ikke hentes igen. Genindlæs siden for at opdatere din måleplan.";
     }
-  } catch {
+  } catch (err) {
     besked.innerText = "Kunne ikke få svar fra serveren. Tjek din måleplan, før du prøver igen.";
-  } finally {
-    knap.disabled = gemteMaalinger.some(maaling => Number(maaling.maaleplan_id) === maaleplanId);
   }
+
+  opdaterRegistreringsknap(maaleplanId);
+}
+
+function opdaterRegistreringsknap(maaleplanId) {
+  let erRegistreret = false;
+
+  for (const maaling of gemteMaalinger) {
+    if (Number(maaling.maaleplan_id) === maaleplanId) {
+      erRegistreret = true;
+      break;
+    }
+  }
+
+  knap.disabled = erRegistreret;
 }
 
 function feltErTomt() {
