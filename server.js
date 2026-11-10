@@ -86,7 +86,7 @@ app.post("/api/maalinger", async (req, res) => {
   if (!maaleplan_id || !blodsukker || !maalt_tid) {
     return res.status(400).json({ error: "Måleplan, blodsukker og målt tid skal udfyldes" });
   }
-  if (maaleplan_id !== Number(maaleplan_id) ||
+  if (!Number.isInteger(maaleplan_id) ||
       maaleplan_id < 1 || maaleplan_id > 2147483647 ||
       blodsukker !== Number(blodsukker) || blodsukker <= 0) {
     return res.status(400).json({ error: "Angiv et gyldigt måleplan-ID og en positiv blodsukkerværdi" });
